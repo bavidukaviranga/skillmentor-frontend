@@ -1,6 +1,8 @@
 import type { CardElement } from "../types";
+import { Button } from "./ui/button";
 
-function Card({title,description,}:CardElement){
+
+function CustomCard({title,description,}:CardElement){
   return (
     <div style={{
        maxWidth: '20rem',
@@ -13,7 +15,9 @@ function Card({title,description,}:CardElement){
     >
       <h1>{title}</h1>
       <p>{description}</p>
+      <Button variant="secondary">schedule a session</Button>
+    
     </div>
   );
 }
-export default Card;
+export default CustomCard;

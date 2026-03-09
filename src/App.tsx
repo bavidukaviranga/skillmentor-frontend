@@ -1,5 +1,5 @@
-import Card from "@/components/Cards";
 import type { CardElement } from "@/types";
+import CardGroup from "./components/CardGroup";
 
 function App() {
   const cards:CardElement[] = [
@@ -29,24 +29,9 @@ function App() {
     },
   ];
 
-  console.log(cards);
+  
 
   
-  return (
-    <div 
-      style={{
-        display:"flex",
-        gap:"2rem",
-    }}
-    
-    >
-      {cards.map((card) =>{
-          
-        return <Card title={card.title} description={card.description}/>;
-      
-      })}
-      
-    </div>
-  );
+  return <CardGroup cardElements={cards} />;
 }
 export default App;
