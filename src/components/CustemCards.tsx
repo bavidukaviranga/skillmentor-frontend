@@ -1,23 +1,16 @@
 import type { CardElement } from "../types";
 import { Button } from "./ui/button";
 
-
-function CustomCard({title,description,}:CardElement){
+function CustomCard({ cardProperties }: { cardProperties: CardElement }) {
   return (
-    <div style={{
-       maxWidth: '20rem',
-       backgroundColor:"black",
-       color:"white",
-       padding:"1rem",
-       borderRadius:"0.5rem",
-
-    }}
-    >
-      <h1>{title}</h1>
-      <p>{description}</p>
-      <Button variant="secondary">schedule a session</Button>
-    
+    <div className="bg-black text-white p-2 rounded-2xl flex flex-col items-center">
+      <h1 className="text-cyan-500 text-center text-2xl">
+        {cardProperties.title}
+      </h1>
+      <p className="text-center">{cardProperties.description}</p>
+      <Button variant="secondary">Schedule a Call</Button>
     </div>
   );
 }
+
 export default CustomCard;
