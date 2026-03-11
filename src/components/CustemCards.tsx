@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { CardElement } from "../types";
+import type { CardElement } from "@/types";
 import { Button } from "./ui/button";
 import {
   Card,
