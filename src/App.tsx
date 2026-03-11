@@ -34,7 +34,17 @@ function App() {
     },
   ];
 
-  return <CardGroup cardElements={cards} />;
+return <section>
+  {cards.map{(cardDetails) =>{
+    return {<div>
+      <h1>{cardDetails.title}</h1>
+      <p>{cardDetails.description}</p>
+    
+    </div>
+    };
+  }}}
+</section>
+};
 }
 
 export default App;
