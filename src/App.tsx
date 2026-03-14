@@ -1,33 +1,48 @@
-import { Route, Routes } from "react-router";
-import HomePage from "./pages/HomePage";
-import DashboardPage from "./pages/DashboardPage";
-import Layout from "./Layout";
+import { BrowserRouter, Routes, Route } from "react-router";
+import Layout from "@/components/Layout";
+import HomePage from "@/pages/HomePage";
+import LoginPage from "@/pages/LoginPage";
+import DashboardPage from "@/pages/DashboardPage";
+import PaymentPage from "@/pages/PaymentPage";
 import { SignedIn, SignedOut } from "@clerk/clerk-react";
 
 function App() {
   return (
-    <Routes>
-      {/* Route groups */}
-      <Route path="/" element={<Layout />}>
-        <Route index element={<HomePage />} />
-        <Route
-          path="/dashboard"
-          element={
-            <>
-              <SignedIn>
-                <DashboardPage />
-              </SignedIn>
-              <SignedOut>
-                <h1>Please sign in to view the dashboard</h1>
-              </SignedOut>
-            </>
-          }
-        />
-      </Route>
-
-      {/* 404 page */}
-      <Route path="*" element={<h1>404 Not Found</h1>} />
-    </Routes>
+    <BrowserRouter>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route
+            path="/dashboard"
+            element={
+              <>
+                <SignedIn>
+                  <DashboardPage />
+                </SignedIn>
+                <SignedOut>
+                  <LoginPage />
+                </SignedOut>
+              </>
+            }
+          />
+          <Route
+            path="/payment/:sessionId"
+            element={
+              <>
+                <SignedIn>
+                  <PaymentPage />
+                </SignedIn>
+                <SignedOut>
+                  <LoginPage />
+                </SignedOut>
+              </>
+            }
+          />
+          <Route path="*" element={<LoginPage />} />
+        </Routes>
+      </Layout>
+    </BrowserRouter>
   );
 }
 
